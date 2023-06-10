@@ -1,3 +1,4 @@
+/// question create memoized function so expensive funtion will not execute if argument are same 
 
 const multiplfun=(a,b)=>{
     for(let i=0;i<100000;i++)
