@@ -82,3 +82,50 @@ let arr=[
 
 console.log(customFlat(arr,3))
 //output : [1, 2, 3, 4, 5, 6, 7, 8, 200, 9, 10]
+
+
+// Q create custome promise ALL method
+
+/**--------------START PROMISE ALL METHOD--------------------------- */
+ 
+function show(myname){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve(myname)
+        },1000)
+    })
+ }
+
+ p1=new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+        reject("Promise2 is resolved")
+    },2000)
+ })
+
+
+
+ function customeAll(promises) {
+  let result=[];
+    let count=0;
+    return new Promise((resolve,reject)=>{
+        promises.forEach(p => {
+            p.then((res)=>{
+                count+=1
+                result.push(res)
+                if(count===promises.length){
+                    resolve(result)
+                }
+            }).catch(er=>{
+                reject(er)
+            })
+        });
+    })
+    
+ }
+
+
+ customeAll([show("Hello"),p1]).then(res=>console.log(res)).catch((er)=>{
+    console.error(er)
+ })
+
+ /**-------------END PROMISE ALL METHOD------------------------------------ */
