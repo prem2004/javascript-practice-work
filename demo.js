@@ -1,36 +1,35 @@
 /// question create memoized function so expensive funtion will not execute if argument are same 
 
-const multiplfun=(a,b)=>{
-    for(let i=0;i<100000;i++)
-    {
+const multiplfun = (a, b) => {
+    for (let i = 0; i < 100000; i++) {
 
     }
-    return a+b
+    return a + b
 }
 
 
-function myMemoize(fn,context){
-    let res={}
-  return function(...args){
-   var argsCache=JSON.stringify(args)
-   
-    if(!res[argsCache]){
-       return res[argsCache]=fn.call(context || this, ...args)
+function myMemoize(fn, context) {
+    let res = {}
+    return function (...args) {
+        var argsCache = JSON.stringify(args)
+
+        if (!res[argsCache]) {
+            return res[argsCache] = fn.call(context || this, ...args)
+        }
+        return res[argsCache]
     }
-    return res[argsCache]
-  }
 }
 
 
 console.time();
-let ss=myMemoize(multiplfun)
-console.log(ss(10,20))
+let ss = myMemoize(multiplfun)
+console.log(ss(10, 20))
 console.timeEnd()
 
 
 
 console.time();
-console.log(ss(10,20))
+console.log(ss(10, 20))
 console.timeEnd()
 
 
@@ -38,18 +37,18 @@ console.timeEnd()
 //const result=calc.add(10).miltiply(5).substract(30).add(10)
 //console.log(result.totle)
 
-const calc={
-    result:0,
-    add:function(num){
-        this.result+=num
+const calc = {
+    result: 0,
+    add: function (num) {
+        this.result += num
         return this
     },
-    multiply:function(num){
-        this.result=this.result * num
+    multiply: function (num) {
+        this.result = this.result * num
         return this
     },
-    substract:function(num){
-        this.result=this.result - num
+    substract: function (num) {
+        this.result = this.result - num
         return this
     }
 }
@@ -59,13 +58,12 @@ console.log(calc.result)
 
 //Q 3 flaten below array
 
-function customFlat(arr,dept=1){
-    let result=[]
+function customFlat(arr, dept = 1) {
+    let result = []
     arr.forEach(el => {
-        if(Array.isArray(el) && dept>0)
-        {
-            result.push(...customFlat(el,dept-1))
-        }else{
+        if (Array.isArray(el) && dept > 0) {
+            result.push(...customFlat(el, dept - 1))
+        } else {
             result.push(el)
         }
     });
@@ -74,58 +72,86 @@ function customFlat(arr,dept=1){
 }
 
 
-let arr=[
-    [1,2],
-    [3,4,[5,6,[7,8],200]],
-    [9,10]
+let arr = [
+    [1, 2],
+    [3, 4, [5, 6, [7, 8], 200]],
+    [9, 10]
 ]
 
-console.log(customFlat(arr,3))
+console.log(customFlat(arr, 3))
 //output : [1, 2, 3, 4, 5, 6, 7, 8, 200, 9, 10]
 
 
 // Q create custome promise ALL method
 
 /**--------------START PROMISE ALL METHOD--------------------------- */
- 
-function show(myname){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
+
+function show(myname) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
             resolve(myname)
-        },1000)
+        }, 1000)
     })
- }
+}
 
- p1=new Promise((resolve,reject)=>{
-    setTimeout(()=>{
+p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
         reject("Promise2 is resolved")
-    },2000)
- })
+    }, 2000)
+})
 
 
 
- function customeAll(promises) {
-  let result=[];
-    let count=0;
-    return new Promise((resolve,reject)=>{
+function customeAll(promises) {
+    let result = [];
+    let count = 0;
+    return new Promise((resolve, reject) => {
         promises.forEach(p => {
-            p.then((res)=>{
-                count+=1
+            p.then((res) => {
+                count += 1
                 result.push(res)
-                if(count===promises.length){
+                if (count === promises.length) {
                     resolve(result)
                 }
-            }).catch(er=>{
+            }).catch(er => {
                 reject(er)
             })
         });
     })
-    
- }
+
+}
 
 
- customeAll([show("Hello"),p1]).then(res=>console.log(res)).catch((er)=>{
+customeAll([show("Hello"), p1]).then(res => console.log(res)).catch((er) => {
     console.error(er)
- })
+})
 
- /**-------------END PROMISE ALL METHOD------------------------------------ */
+/**-------------END PROMISE ALL METHOD------------------------------------ */
+
+// Q write funtion Check array are qual or not
+
+/**---------------start array equal----------------------------------------*/
+function checkArray(a, b) {
+    let ln = a.length;
+    if (a.length !== b.length) {
+        return false
+    }
+    a.sort();
+    b.sort();
+
+    for (let i = 0; i < ln; i++) {
+        if (a[i] !== b[i]) {
+            return false
+        }
+    }
+    return true
+
+}
+
+let a = [5, 4, 3, 2, 1]
+let b = [1, 2, 3, 4, 5]
+
+console.log(checkArray(a, b))
+
+/**--------------end array equal-------------------------------------------*/
+
