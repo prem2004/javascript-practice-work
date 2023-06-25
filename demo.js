@@ -155,3 +155,18 @@ console.log(checkArray(a, b))
 
 /**--------------end array equal-------------------------------------------*/
 
+// Q why we need arrow funtion 
+
+
+const person={
+    ename:"Prem mokashe",
+    display:function(){
+      setTimeout(function(){
+         console.log(this.ename)
+      }.bind(this))
+    }
+  }
+  
+  person.display()
+
+  /*---------------------end arrrow funtion need example--------------------------- */
