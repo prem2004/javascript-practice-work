@@ -170,3 +170,42 @@ const person={
   person.display()
 
   /*---------------------end arrrow funtion need example--------------------------- */
+
+  /** Q 1 : Promise.All polifil method */
+     let p1=new Promise(((resolve,reject)=>{
+       setTimeout(()=>{
+         reject([10,20])
+       },1000)
+      }))
+    
+     let p2=new Promise(((resolve)=>{
+       setTimeout(()=>{
+         resolve([30,40])
+       },5000)
+      }))
+    
+    
+    Promise.customAll=function(prom){
+      return new Promise((resolve,reject)=>{
+       let result=[];
+       total=0;
+       prom.forEach(pr => {
+        pr.then((res,i)=>{
+          result[i]=res;
+          total++;
+          if(total===prom.length) resolve(result)
+         }).catch((er)=>{
+          reject(er)
+         })
+       });
+     })
+    }
+    
+     Promise.customAll([p1,p2]).then(res=>console.log(res))
+    .catch((er)=>console.error(er))
+
+
+  /** end Promise.all polifill */
+
+
+
