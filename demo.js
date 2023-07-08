@@ -239,3 +239,33 @@ const apicall=()=>{
 
 /*------------------------------Debouncing end----------------------*/
 
+/* Q3: write JavaScript Throttling function */
+ 
+const apicall3=(a)=>{
+    console.log("API is called")
+  }
+  
+  const throtling=(fun,delay)=>{
+    let flag=true;
+    return function(){
+      let context=this;
+      let args=arguments
+      console.log(flag) 
+      if(flag){
+        flag=false
+         apicall3.apply(context,args)
+        setTimeout(()=>{
+          flag=true
+        },3000)
+      }
+    }
+  }
+  
+  let callthrot=throtling(apicall3,1000,20)
+  
+  let btn2=document.querySelector('#btn2')
+  btn2.addEventListener('click',()=>{
+    callthrot(10)
+  })
+
+/*----------------------Throttling end here--------------------- */
