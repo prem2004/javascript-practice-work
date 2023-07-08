@@ -94,7 +94,7 @@ function show(myname) {
     })
 }
 
-p1 = new Promise((resolve, reject) => {
+   const p4 = new Promise((resolve, reject) => {
     setTimeout(() => {
         reject("Promise2 is resolved")
     }, 2000)
@@ -122,7 +122,7 @@ function customeAll(promises) {
 }
 
 
-customeAll([show("Hello"), p1]).then(res => console.log(res)).catch((er) => {
+customeAll([show("Hello"), p4]).then(res => console.log(res)).catch((er) => {
     console.error(er)
 })
 
@@ -207,5 +207,35 @@ const person={
 
   /** end Promise.all polifill */
 
+/* Q2  Create Debouncing in javascript  */
 
+
+const apicall=()=>{
+    console.log("api called")
+  }
+  
+  
+  function deboucing(callbackfun)
+  {
+    let timer;
+    return function(){
+      clearTimeout(timer)
+      timer=setTimeout(()=>{
+        callbackfun()
+      },2000)
+    }
+  }
+  
+  fun=deboucing(apicall)
+  
+  let btn=document.querySelector('#btn')
+  console.log(btn)
+  
+  btn.addEventListener('click',()=>{
+   fun();
+  })
+  
+
+
+/*------------------------------Debouncing end----------------------*/
 
