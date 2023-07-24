@@ -269,3 +269,13 @@ const apicall3=(a)=>{
   })
 
 /*----------------------Throttling end here--------------------- */
+
+// Q1 number is Palindrome 
+
+function isPalindrome(x){
+  return x===Number(x.toString().split("").reverse().join(""))
+}
+
+console.log(isPalindrome(121))
+
+/**------------------End Palidrome---------------------- */
