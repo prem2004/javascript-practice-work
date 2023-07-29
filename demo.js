@@ -279,3 +279,49 @@ function isPalindrome(x){
 console.log(isPalindrome(121))
 
 /**------------------End Palidrome---------------------- */
+
+//Q find some of two number equal to trarget value 
+
+var twoSum = function(nums, target) {
+ 
+  for(let i=0;i<nums.length;i++){
+    if(i==nums.length-1){
+        for(let j=0;j<nums.length-1;i++)
+        {
+         if (nums[i]+nums[j]===target) 
+         {
+         return [i,j]
+          
+         }
+        }
+    }else{
+      for(let m=i+1;m<nums.length;m++){
+        if (nums[i]+nums[m]===target) 
+        {
+          return [i,m]
+        }
+      }
+    }
+  }
+  
+};
+
+ 
+console.log(twoSum([3,2,4,15,15],30))
+/*-------------------- end some to two number --------------------- */
+
+/* Q write a program for anagram/
+/**An anagram of a string is another string that contains the same characters, only the order of characters can be different */
+
+let s="anagram"
+let t="nagaram"
+
+function check(m,n){
+  if(m.length!==n.length) return false
+  m=m.split("").sort().join("");
+  n=n.split("").sort().join("");
+ return m==n
+}
+
+console.log(check(s,t))
+/*-----------end anagram---------------------- */
