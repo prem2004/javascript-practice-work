@@ -325,3 +325,82 @@ function check(m,n){
 
 console.log(check(s,t))
 /*-----------end anagram---------------------- */
+
+/** write a program to show output as below */
+/*
+[
+  { stock: 'FB', name: [ 'Mark' ], count: 1 },
+  { stock: 'APPL', name: [ 'Stev', 'Tim', 'Bill' ], count: 3 },
+  { stock: 'MSFT', name: [ 'Stev', 'Bill' ], count: 2 }
+]
+
+*/
+
+const portfollio=[
+  {name:"Mark", stock:"FB"},
+  {name:"Stev", stock:"APPL"},
+  {name:"Tim", stock:"APPL"},
+  {name:"Stev", stock:"MSFT"},
+  {name:"Bill", stock:"MSFT"},
+  {name:"Bill", stock:"APPL"},
+]
+
+function show(p){
+  let ss=new Set(p.map((i)=>i.stock))
+  let shareholder=[]
+  ss.forEach(stockval => {
+    let obj={'stock':'', name:[],count:0}
+     p.forEach(p=>{
+      
+      if(stockval==p.stock)
+      {
+        obj.stock=stockval;
+        obj.name.push(p.name);
+        obj.count=obj.count+1
+      }
+     })
+     shareholder.push(obj)
+     obj={'stock':'', name:[],count:0}
+    
+  });
+  return shareholder
+}
+
+
+console.log(show(portfollio))
+
+/**----------------------------------end----------------------------------------------------- */
+
+/* wtire a program to  return number in woord 0-99 */
+
+let ar1=["zero","one", "two", "three", "four", "five","six", "seven", "eight", "nine",'ten', 'eleven', 'tweal', 'thirteen','fourteen','fifteen', 'sixteen','seventen', 'nineteen']
+let ar2=["0","ten","twenty", "thirty", 'fourty',"fifty", "sixty", "senty", "eighty", "ninty" ]
+
+
+function giveword(n){
+  if(n<0 || n>100) return
+  const numar=String(n).split("")
+    
+  if(numar.length<=1)
+  {
+    return ar1[n]
+  }else if(numar[1]==0){
+    return ar2[numar[0]]
+  }else{
+    if(n>=10 && n<=19)
+    {
+      return ar1[n] 
+    }else
+    {
+      return ar2[numar[0]] + ar1[numar[1]]
+    }
+    
+  }
+
+}
+
+console.log(giveword(101))
+
+
+
+/**------------------------------end---------------------------------------------- */
