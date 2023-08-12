@@ -404,3 +404,18 @@ console.log(giveword(101))
 
 
 /**------------------------------end---------------------------------------------- */
+
+/** find max number from array, below is find second max from array */
+
+let ar=[4,5,4,7,4,9,9]
+
+ new Set(ar.sort((a,b)=>a-b))[ar.length-2]
+
+
+function findNumber(n){
+   let result=ar.filter((a,i,aa)=>aa.indexOf(a)===i).sort((a,b)=>a-b)
+   return result[result.length-n]
+}
+console.log(findNumber(1))
+
+/*-----------------------end-------------------------------*/
