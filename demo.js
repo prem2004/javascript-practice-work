@@ -419,3 +419,28 @@ function findNumber(n){
 console.log(findNumber(1))
 
 /*-----------------------end-------------------------------*/
+
+/** Remove duplicate from array */
+
+
+let ar3=[0,0,1,1,1,1,1,1,2,2,3,4]
+
+function removeDuplicate(a)
+{
+   for(let i=0;i<a.length;i++){
+     for(let j=i+1;j<a.length;j++)
+     {
+        if(a[i]==a[j])
+        {
+            a.splice(j,1)
+            j--
+        }
+     }
+   }
+   return a
+}
+
+console.log(removeDuplicate(ar3))
+
+
+/* end remove duplicate */
