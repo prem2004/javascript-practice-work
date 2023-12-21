@@ -444,3 +444,46 @@ console.log(removeDuplicate(ar3))
 
 
 /* end remove duplicate */
+
+
+/*---------------Remove Duplicate from array ------------------- */
+{
+  const ar=[1,3,3,3,1,5,6,7,8,1]
+  
+  const removeDuplicate=(a)=>{
+     const temObj={};
+     const resultArray=[]
+    
+    for(let i=0;i<a.length;i++){
+        if(!temObj[a[i]]){
+           temObj[a[i]]=true;
+           resultArray.push(a[i])
+        }
+     }
+     return resultArray
+  }
+  
+  console.log(removeDuplicate(ar))
+  }
+/*---------------end duplicate array---------------------*/
+
+/*-----Reverser string----------------------------------*/
+  {
+    let a='you are a nice dude'
+
+const reverseString=()=>{
+   //console.log(a.split("").reverse().join(""))
+   let str=""
+  
+   for(let i=a.length-1;i>=0;i--)
+   {
+     str+=a[i]
+   }
+   console.log(str)   
+}
+reverseString()
+
+//output
+//edud ecin a era uoy
+  }
+/*----------------end reverser string */
