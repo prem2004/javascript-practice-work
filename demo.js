@@ -487,3 +487,20 @@ reverseString()
 //edud ecin a era uoy
   }
 /*----------------end reverser string */
+
+/**Remove deuplicate from array 11-02-2024 */
+let ar5=[1,2,3,4,5,3,3,2,1]
+
+function removeduplicate(a){
+  let result={};
+
+  for(let i=0;i<a.length;i++){
+    if(!result[a[i]]){
+        result[a[i]]=a[i]
+    }
+  }
+   return Object.values(result)
+}
+console.log(removeduplicate(ar5))
+
+/**-------------end---------------- */
