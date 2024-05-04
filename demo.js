@@ -504,3 +504,53 @@ function removeduplicate(a){
 console.log(removeduplicate(ar5))
 
 /**-------------end---------------- */
+
+/**--------------interview question on 04-may=2024 ----------------------------------*/
+
+const arobj=[
+  {
+   key:"sample 1",
+   data:'data1'
+  },
+  {
+      key:"sample 1",
+      data:'data3'
+  },
+  {
+      key:"sample 2",
+      data:'data1'
+  },
+  {
+      key:"sample 2",
+      data:'data2'
+  },
+  {
+      key:"sample 3",
+      data:'data1'
+  },
+  {
+      key:"sample 3",
+      data:'data2'
+  },
+]
+
+
+
+function show(){
+let resultobj={};
+
+arobj.forEach((obj)=>{
+ if(!resultobj[obj.key])
+ {
+  resultobj[obj.key]=[obj]
+ }else{
+  resultobj[obj.key].push(obj)
+ }
+})
+
+console.log(resultobj)
+}
+
+show()
+
+/**end here----------------------------------------- */
