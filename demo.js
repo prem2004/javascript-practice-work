@@ -554,3 +554,29 @@ console.log(resultobj)
 show()
 
 /**end here----------------------------------------- */
+
+
+function CompoundAmount(){
+  return{
+   result:0,
+   lacs:function(v){
+     this.result+=Number(`${v}00000`)
+     return this
+   },
+   core:function(val){
+     this.result+=Number(`${val}0000000`)
+     return this
+   },
+   thousand:function(th){
+     this.result+=Number(`${th}000`)
+     return this
+   },
+
+   values:function(){
+   return this.result
+   }
+  }
+}
+
+console.log(CompoundAmount().lacs(5).core(1).thousand(1).lacs(2).values())
+
