@@ -579,7 +579,3 @@ function CompoundAmount(){
 }
 
 console.log(CompoundAmount().lacs(5).core(1).thousand(1).lacs(2).values())
-
-
-
-//testing
